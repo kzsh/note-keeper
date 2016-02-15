@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   scope('api/v1', defaults: { format: 'json' }) do
-    resources :notes, only: [:index]
+    scope(module: 'api/v1') do
+      resources :notes, only: [:index]
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -56,4 +58,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  root('home#index')
 end
